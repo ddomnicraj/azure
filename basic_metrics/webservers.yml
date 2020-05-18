@@ -1,0 +1,13 @@
+---
+- hosts: webservers
+  remote_user: ubuntu
+  become_user: sudo
+  become: yes
+
+  tasks:
+  - name: Checking CPU usage
+    command: "{{ item }}"
+    with_items:
+    - top -o %CPU > /etc/test_result/cpu_usage
+    - free -m > /etc/test_result/mem_usage
+    - vnstat > /etc/test_result/net_usage
