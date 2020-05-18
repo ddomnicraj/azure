@@ -1,0 +1,72 @@
+---
+- hosts: 127.0.0.1
+
+  vars:
+    resource_group: provisiontest
+    location: eastus
+    vnet_name: testvn
+    subnet_name: testsubnet
+    vm_username: testuser
+    vm_password: testpassword
+    instance_name1: instance1
+    instance_name1: instance2
+    azure_user: dom@ddomnicrajhotmail.onmicrosoft.com
+    azure_password: 6Bf%8uEB`'CWe/Y
+
+  tasks:
+    - name: Create a resource group
+      azure_rm_resourcegroup:
+        ad_user: "{{ azure_user }}"
+        password: "{{ azure_password }}"
+        subscription_id: "{{ subid }}"
+        name: "{{ resource_group }}"
+        location: "{{ location }}"
+
+    - name: Create virtual network
+      azure_rm_virtualnetwork:
+        ad_user: "{{ azure_user }}"
+        password: "{{ azure_password }}"
+        subscription_id: "{{ subid }}"
+        resource_group: "{{ resource_group }}"
+        name: "{{ vnet_name }}"
+        address_prefixes: "10.10.0.0/16"
+
+    - name: Add subnet
+      azure_rm_subnet:
+        ad_user: "{{ azure_user }}"
+        password: "{{ azure_password }}"
+        subscription_id: "{{ subid }}"
+        resource_group: Testing
+        name: "{{ subnet_name }}"
+        address_prefix: "10.10.0.0/24"
+        virtual_network: "{{ vnet_name }}"
+
+    - name: provision instance1
+      azure_rm_virtualmachine:
+        ad_user: "{{ azure_user }}"
+        password: "{{ azure_password }}"
+        subscription_id: "{{ subid }}"
+        admin_username: "{{ vm_username }}"
+        admin_password: "{{ vm_password }}"
+        resource_group: "{{ resource_group }}"
+        name: "{{ instance_name1 }}"
+        image:
+          offer: CentOS
+          publisher: OpenLogic
+          sku: '7.1'
+          version: latest
+
+    - name: provision instance2
+      azure_rm_virtualmachine:
+        ad_user: "{{ azure_user }}"
+        password: "{{ azure_password }}"
+        subscription_id: "{{ subid }}"
+        admin_username: "{{ vm_username }}"
+        admin_password: "{{ vm_password }}"
+        resource_group: "{{ resource_group }}"
+        name: "{{ instance_name2 }}"
+        image:
+          offer: CentOS
+          publisher: OpenLogic
+          sku: '7.1'
+          version: latest
