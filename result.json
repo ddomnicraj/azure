@@ -1,0 +1,98 @@
+root@ip-172-31-26-179:/etc/ansible# python ./azure_rm.py --list | jq
+{
+  "ansible-nsg": [
+    "test1",
+    "ansible-vm"
+  ],
+  "_meta": {
+    "hostvars": {
+      "test1": {
+        "powerstate": "running",
+        "resource_group": "ansible-inventory-test-rg",
+        "tags": {},
+        "image": {
+          "sku": "18.04-LTS",
+          "publisher": "Canonical",
+          "version": "latest",
+          "offer": "UbuntuServer"
+        },
+        "public_ip_alloc_method": "Dynamic",
+        "os_disk": {
+          "operating_system_type": "Linux",
+          "name": "test1_disk1_4a781f9c64be47219d83058e406b75c6"
+        },
+        "provisioning_state": "Updating",
+        "public_ip": "20.185.40.38",
+        "public_ip_name": "ansible-ip",
+        "private_ip": "10.0.0.4",
+        "computer_name": "test1",
+        "public_ip_id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Network/publicIPAddresses/ansible-ip",
+        "security_group_id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Network/networkSecurityGroups/ansible-nsg",
+        "ansible_host": "20.185.40.38",
+        "name": "test1",
+        "fqdn": null,
+        "id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ANSIBLE-INVENTORY-TEST-RG/providers/Microsoft.Compute/virtualMachines/test1",
+        "virtual_machine_size": "Standard_DS1_v2",
+        "network_interface_id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Network/networkInterfaces/ansibleVMnic",
+        "private_ip_alloc_method": "Dynamic",
+        "location": "eastus",
+        "mac_address": "00-0D-3A-11-C9-E3",
+        "security_group": "ansible-nsg",
+        "network_interface": "ansibleVMnic",
+        "type": "Microsoft.Compute/virtualMachines",
+        "plan": null
+      },
+      "ansible-vm": {
+        "powerstate": "running",
+        "resource_group": "ansible",
+        "tags": {},
+        "image": {
+          "sku": "18.04-LTS",
+          "publisher": "Canonical",
+          "version": "latest",
+          "offer": "UbuntuServer"
+        },
+        "public_ip_alloc_method": "Dynamic",
+        "os_disk": {
+          "operating_system_type": "Linux",
+          "name": "ansible-vm_disk1_a823b0e1b39f454a9ff2441a86e48b85"
+        },
+        "provisioning_state": "Succeeded",
+        "public_ip": "52.149.156.100",
+        "public_ip_name": "ansible-ip",
+        "private_ip": "10.0.0.4",
+        "computer_name": "ansible-vm",
+        "public_ip_id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ansible/providers/Microsoft.Network/publicIPAddresses/ansible-ip",
+        "security_group_id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ansible/providers/Microsoft.Network/networkSecurityGroups/ansible-nsg",
+        "ansible_host": "52.149.156.100",
+        "name": "ansible-vm",
+        "fqdn": null,
+        "id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ANSIBLE/providers/Microsoft.Compute/virtualMachines/ansible-vm",
+        "virtual_machine_size": "Standard_DS1_v2",
+        "network_interface_id": "/subscriptions/10479246-ed10-414b-9910-82e7bcd6c01c/resourceGroups/ansible/providers/Microsoft.Network/networkInterfaces/ansibleVMnic",
+        "private_ip_alloc_method": "Dynamic",
+        "location": "eastus",
+        "mac_address": "00-0D-3A-53-2F-22",
+        "security_group": "ansible-nsg",
+        "network_interface": "ansibleVMnic",
+        "type": "Microsoft.Compute/virtualMachines",
+        "plan": null
+      }
+    }
+  },
+  "eastus": [
+    "test1",
+    "ansible-vm"
+  ],
+  "ansible": [
+    "ansible-vm"
+  ],
+  "ansible-inventory-test-rg": [
+    "test1"
+  ],
+  "azure": [
+    "test1",
+    "ansible-vm"
+  ]
+}
+
